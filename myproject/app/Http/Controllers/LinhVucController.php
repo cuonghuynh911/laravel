@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\LinhVuc;
-
-
 class LinhVucController extends Controller
 {
     /**
@@ -15,9 +13,9 @@ class LinhVucController extends Controller
      */
     public function index()
     {
-        //
-        $dslinhVuc = LinhVuc::all();
-        return view('ds-linh-vuc', compact('dslinhVuc'));
+        $listLinhVuc=LinhVuc::all();
+
+        return view('linh-vuc.danh-sach',compact('listLinhVuc'));
     }
 
     /**
@@ -27,8 +25,7 @@ class LinhVucController extends Controller
      */
     public function create()
     {
-        //
-            return view('them-moi-linh-vuc');
+        return view('linh-vuc.form');
     }
 
     /**
@@ -39,12 +36,11 @@ class LinhVucController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $linhVuc = new LinhVuc;
-        $linhVuc->ten_linh_vuc = $request->ten_linh_vuc;
+        $linhVuc=new LinhVuc;
+        $linhVuc->ten_linh_vuc=$request->ten_linh_vuc;
         $linhVuc->save();
 
-        return redirect()->route('linh-vuc.danh-sach');
+        return redirect()->route('linh-vuc.danh-sach');    
     }
 
     /**
@@ -56,7 +52,6 @@ class LinhVucController extends Controller
     public function show($id)
     {
         //
-        
     }
 
     /**
@@ -67,10 +62,8 @@ class LinhVucController extends Controller
      */
     public function edit($id)
     {
-        //
         $linhVuc = LinhVuc::find($id);
-        return view('them-moi-linh-vuc',compact('linhVuc'));
-
+        return view('linh-vuc.form', compact('linhVuc'));
     }
 
     /**
@@ -82,9 +75,8 @@ class LinhVucController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
         $linhVuc = LinhVuc::find($id);
-        $linhVuc->ten_linh_vuc = $request->ten_linh_vuc;
+        $linhVuc->ten_linh_vuc=$request->ten_linh_vuc;
         $linhVuc->save();
 
         return redirect()->route('linh-vuc.danh-sach');
@@ -98,7 +90,6 @@ class LinhVucController extends Controller
      */
     public function destroy($id)
     {
-        //
         $linhVuc = LinhVuc::find($id);
         $linhVuc->delete();
         return redirect()->route('linh-vuc.danh-sach');

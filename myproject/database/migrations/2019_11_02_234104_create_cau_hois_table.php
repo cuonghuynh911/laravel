@@ -14,13 +14,13 @@ class CreateCauHoisTable extends Migration
     public function up()
     {
         Schema::create('cau_hoi', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('noi_dung');
-            $table->integer('linh_vuc_id');
-            $table->string('phuong_an_a');
-            $table->string('phuong_an_b');
-            $table->string('phuong_an_c');
-            $table->string('phuong_an_d');
+            $table->unsignedInteger('linh_vuc_id');
+            $table->text('phuong_an_a');
+            $table->text('phuong_an_b');
+            $table->text('phuong_an_c');
+            $table->text('phuong_an_d');
             $table->string('dap_an');
             $table->timestamps();
             $table->softDeletes();
