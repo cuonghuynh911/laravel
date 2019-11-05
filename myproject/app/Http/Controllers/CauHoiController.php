@@ -73,7 +73,7 @@ class CauHoiController extends Controller
 
         $cauHoi = CauHoi::find($id);
         $listLinhVuc=LinhVuc::all();  
-        return view('cau-hoi.form', compact('cauHoi','listLinhVuc'));
+        return view('cau-hoi.update', compact('cauHoi','listLinhVuc'));
     }
 
     /**

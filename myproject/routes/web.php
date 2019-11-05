@@ -36,3 +36,12 @@ Route::prefix('cau-hoi')->group(function(){
 		Route::get('xoa/{id}','CauHoiController@destroy')->name('xoa');
 	});
 });
+
+Route::prefix('nguoi-choi')->group(function(){
+	Route::name('nguoi-choi.')->group(function(){
+		Route::get('/','NguoiChoiController@index')->name('danh-sach');
+		Route::get('them-moi','NguoiChoiController@create')->name('them-moi');
+		Route::post('them-moi','NguoiChoiController@store')->name('xu-li-them-moi');
+		Route::get('xoa/{id}','NguoiChoiController@destroy')->name('xoa');
+	});
+});

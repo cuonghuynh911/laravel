@@ -9,6 +9,8 @@ class LinhVucController extends Controller
 {
     public function layDanhSach()
     {
+    	
+    	
     	$listLinhVuc=LinhVuc::all()->random(4);
     	$result=[
     		'success' => true,
