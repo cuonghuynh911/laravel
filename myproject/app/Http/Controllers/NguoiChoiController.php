@@ -41,13 +41,12 @@ class NguoiChoiController extends Controller
     {
         $nguoiChoi = new NguoiChoi;
 
-        $nguoiChoi->noi_dung=$request->noi_dung;
-        $nguoiChoi->linh_vuc_id=$request->linh_vuc;
-        $nguoiChoi->phuong_an_a=$request->phuong_an_a;
-        $nguoiChoi->phuong_an_b=$request->phuong_an_b;
-        $nguoiChoi->phuong_an_c=$request->phuong_an_c;
-        $nguoiChoi->phuong_an_d=$request->phuong_an_d;
-        $nguoiChoi->dap_an=$request->dap_an;
+        $nguoiChoi->ten_nguoi_choi=$request->ten_nguoi_choi;
+        $nguoiChoi->mat_khau=$request->mat_khau;
+        $nguoiChoi->email=$request->email;
+        $nguoiChoi->hinh_dai_dien=$request->hinh_dai_dien;
+        $nguoiChoi->diem_cao_nhat=$request->diem_cao_nhat;
+        $nguoiChoi->credit=$request->credit;
         $nguoiChoi->save();
 
         return redirect()->route('nguoi-choi.danh-sach');    

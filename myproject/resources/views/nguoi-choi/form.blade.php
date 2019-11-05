@@ -10,12 +10,12 @@
                     	@csrf
                        
                         <div class="form-group">
-                            <label for="noi_dung">Tên người chơi</label>
-                            <input type="text" class="form-control" id="noi_dung" name="noi_dung" value="" >
+                            <label for="ten_nguoi_choi">Tên người chơi</label>
+                            <input type="text" class="form-control" id="ten_nguoi_choi" name="ten_nguoi_choi" value="" >
                         </div>
 
                         <div class="form-group">
-                            <label for="linh_vuc">Mật khẩu</label>
+                            <label for="mat_khau">Mật khẩu</label>
                                 <input type="password" class="form-control" id="mat_khau" name="mat_khau"  value="" >
                         </div>
 
