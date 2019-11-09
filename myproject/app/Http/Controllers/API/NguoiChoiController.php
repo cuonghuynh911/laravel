@@ -9,4 +9,16 @@ use App\NguoiChoi;
 class NguoiChoiController extends Controller
 {
     //
+    public function layNguoiChoi()
+    {
+    	
+    	
+    	$listNguoiChoi=NguoiChoi::all()->random(4);
+    	$result=[
+    		'success' => true,
+    		'data' =>$listNguoiChoi
+    	];
+
+    	return response()->json($result);
+    }
 }

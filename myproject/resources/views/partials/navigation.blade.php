@@ -1,4 +1,4 @@
-Li<!-- Navigation Bar-->
+<!-- Navigation Bar-->
 <header id="topnav">
 
     <!-- Topbar Start -->
@@ -368,33 +368,11 @@ Li<!-- Navigation Bar-->
                         
                     </li>
                     
-
-                    <li class="has-submenu">
-                        <a href="#"> <i class="la la-flask"></i>Admin UI <div class="arrow-down"></div></a>
-                        <ul class="submenu">
-                            <li>
-                                <a href="admin-widgets.html">Widgets</a>
-                            </li>
-                            <li>
-                                <a href="admin-sweet-alert.html">Sweet Alert</a>
-                            </li>
-                            <li>
-                                <a href="admin-nestable.html">Nestable List</a>
-                            </li>
-                            <li>
-                                <a href="admin-range-slider.html">Range Slider</a>
-                            </li>
-                            <li>
-                                <a href="admin-tour.html">Tour Page</a>
-                            </li>
-                            <li>
-                                <a href="admin-lightbox.html">Lightbox</a>
-                            </li>
-                            <li>
-                                <a href="admin-treeview.html">Treeview</a>
-                            </li>
-                        </ul>
+                    <li >
+                        <a href="#"> <i class="has-submenu"></i>Đăng nhập</a>
+                        
                     </li>
+                    
 
                     <li class="has-submenu">
                         <a href="#"> <i class="la la-file-text-o"></i>Pages <div class="arrow-down"></div></a>

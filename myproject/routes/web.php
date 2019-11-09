@@ -45,3 +45,7 @@ Route::prefix('nguoi-choi')->group(function(){
 		Route::get('xoa/{id}','NguoiChoiController@destroy')->name('xoa');
 	});
 });
+
+//Route::get('/', function () {
+//    return view('login\dang-nhap');
+//})->name('dangnhap');
