@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Upvex - Responsive Admin Dashboard Template</title>
+        <title>CMS-Đăng nhập</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -34,18 +34,18 @@
                                     <p class="text-muted mb-4 mt-3">Enter your email address and password to access admin panel.</p>
                                 </div>
 
-                                <h5 class="auth-title">Sign In</h5>
+                                <h5 class="auth-title">Đăng nhập</h5>
 
-                                <form action="#">
-
+                                <form action="{{ route('xu-ly-dang-nhap') }}" method="POST">
+                                    @csrf
                                     <div class="form-group mb-3">
-                                        <label for="emailaddress">Email address</label>
-                                        <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email">
+                                        <label for="ten_dang_nhap">Tên đăng nhập</label>
+                                        <input class="form-control" type="text" id="ten_dang_nhap" name="ten_dang_nhap" required="" >
                                     </div>
 
                                     <div class="form-group mb-3">
-                                        <label for="password">Password</label>
-                                        <input class="form-control" type="password" required="" id="password" placeholder="Enter your password">
+                                        <label for="mat_khau">Mật khẩu</label>
+                                        <input class="form-control" type="password" name="mat_khau" required="" id="mat_khau" >
                                     </div>
 
                                     <div class="form-group mb-3">
@@ -56,7 +56,7 @@
                                     </div>
 
                                     <div class="form-group mb-0 text-center">
-                                        <button class="btn btn-danger btn-block" type="submit"> Log In </button>
+                                        <button class="btn btn-danger btn-block" type="submit">Đăng nhập</button>
                                     </div>
 
                                 </form>

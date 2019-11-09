@@ -160,7 +160,7 @@
                         <div class="dropdown-divider"></div>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <a href="{{ route('dang-xuat') }}" class="dropdown-item notify-item">
                             <i class="fe-log-out"></i>
                             <span>Logout</span>
                         </a>
@@ -369,18 +369,18 @@
                     </li>
                     
                     <li >
-                        <a href="#"> <i class="has-submenu"></i>Đăng nhập</a>
+                        <a href="{{ route('dang-nhap') }}"> <i class="has-submenu"></i>Đăng nhập</a>
                         
                     </li>
                     
 
                     <li class="has-submenu">
-                        <a href="#"> <i class="la la-file-text-o"></i>Pages <div class="arrow-down"></div></a>
+                        <a href="#"> <i class="la la-file-text-o"></i>API <div class="arrow-down"></div></a>
                         <ul class="submenu megamenu">
                             <li>
                                 <ul>
                                     <li>
-                                        <a href="pages-starter.html">Starter</a>
+                                        <a href="#">Lĩnh Vực</a>
                                     </li>
                                     <li>
                                         <a href="pages-login.html">Log In</a>

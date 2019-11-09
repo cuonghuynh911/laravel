@@ -22,7 +22,7 @@
     <body>
 
         @include('partials.navigation')
-
+        @include('sweetalert::alert')
         <!-- ============================================================== -->
         <!-- Start Page Content here -->
         <!-- ============================================================== -->
@@ -87,6 +87,8 @@
 
         <!-- App js-->
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
+
+        <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
         
     </body>
 </html>
