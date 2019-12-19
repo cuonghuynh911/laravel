@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\LinhVuc;
 class LinhVucController extends Controller
@@ -13,6 +13,8 @@ class LinhVucController extends Controller
      */
     public function index()
     {
+        
+        
         $listLinhVuc=LinhVuc::all();
 
         return view('linh-vuc.danh-sach',compact('listLinhVuc'));

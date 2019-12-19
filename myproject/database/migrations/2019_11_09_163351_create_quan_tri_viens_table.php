@@ -19,6 +19,7 @@ class CreateQuanTriViensTable extends Migration
             $table->string('mat_khau');
             $table->string('ho_ten');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

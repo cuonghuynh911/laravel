@@ -36,16 +36,29 @@
 
                                 <h5 class="auth-title">Đăng nhập</h5>
 
+                                @if($errors->any())
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
+
                                 <form action="{{ route('xu-ly-dang-nhap') }}" method="POST">
-                                    @csrf
+                                    @csrf 
                                     <div class="form-group mb-3">
                                         <label for="ten_dang_nhap">Tên đăng nhập</label>
-                                        <input class="form-control" type="text" id="ten_dang_nhap" name="ten_dang_nhap" required="" >
+                                        <input class="form-control" type="text" id="ten_dang_nhap" name="ten_dang_nhap"  >
                                     </div>
 
                                     <div class="form-group mb-3">
                                         <label for="mat_khau">Mật khẩu</label>
-                                        <input class="form-control" type="password" name="mat_khau" required="" id="mat_khau" >
+                                        <input class="form-control" type="password" name="mat_khau" id="mat_khau" >
                                     </div>
 
                                     <div class="form-group mb-3">

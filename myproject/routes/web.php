@@ -14,8 +14,8 @@
 
 
 Route::get('api-admin','QuanTriVienController@layThongTin');
-
-Route::get('dang-nhap','QuanTriVienController@dangNhap')->name('dang-nhap');
+ 
+Route::get('dang-nhap','QuanTriVienController@dangNhap')->name('dang-nhap')->middleware('guest');
 
 Route::post('dang-nhap','QuanTriVienController@xuLyDangNhap')->name('xu-ly-dang-nhap');
 

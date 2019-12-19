@@ -14,8 +14,9 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
-            return route('dang-nhap');
-        }
+        // if (! $request->expectsJson()) {
+        //     return route('dang-nhap');
+        // }
+         return route('dang-nhap');
     }
 }
