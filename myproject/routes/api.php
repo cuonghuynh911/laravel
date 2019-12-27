@@ -22,3 +22,7 @@ Route::get('cau-hoi','API\CauHoiController@layCauHoi');
 
 Route::get('nguoi-choi','API\NguoiChoiController@layNguoiChoi');
 
+Route::post('dang-nhap','API\LoginController@dangNhap');
+
+Route::get('lay-thong-tin','API\LoginController@layThongTin');
+
