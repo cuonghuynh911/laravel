@@ -28,8 +28,8 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->view('email.sendmail')
-                    ->text('email.sendmail_plain')
+        return $this->view('mail.sendmail')
+                    ->text('mail.sendmail_plain')
                     ->with([
                         'gia_tri_1' => 1
                         'gia_tri_2' =>100
