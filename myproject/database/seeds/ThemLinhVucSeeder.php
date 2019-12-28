@@ -22,8 +22,6 @@ class ThemLinhVucSeeder extends Seeder
         	['ten_linh_vuc' => 'Khoa học tự nhiên']  
         ];
 
-        foreach ($$listLinhVuc as $linhVuc) {
-        	LinhVuc::create($linhVuc);
-        }
+        
     }
 }
