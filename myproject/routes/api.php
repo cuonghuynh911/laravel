@@ -24,9 +24,9 @@ Route::get('nguoi-choi','API\NguoiChoiController@layNguoiChoi');
 
 Route::post('dang-nhap','API\LoginController@dangNhap');
 
-Route::middleware('assgin.guard:api','jwt.auth')->group(function(){
+
 	Route::get('lay-thong-tin','API\LoginController@layThongTin');
-});	
+
 
 
 

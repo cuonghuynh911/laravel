@@ -15,7 +15,7 @@ class CreateNguoiChoisTable extends Migration
     {
         Schema::create('nguoi_choi', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('ten_nguoi_choi');
+            $table->string('ten_dang_nhap');
             $table->string('mat_khau');
             $table->string('email');
             $table->string('hinh_dai_dien');

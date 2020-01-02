@@ -32,8 +32,9 @@ class LoginController extends Controller
     		'expires' => auth('api')->factory()->getTTL() * 60 
     	], 200);
 
-    	public function layThongTin(){
-    		return auth('api')->user();
-    	}
+    	
     }
+    public function layThongTin(){
+            return auth('api')->user();
+        }
 }

@@ -11,7 +11,7 @@ class ThemLinhVucSeeder extends Seeder
      */
     public function run()
     {
-        $listLinhVuc= [
+        $listLinhVuc=[
         	['ten_linh_vuc' => 'Thể Thao'],
         	['ten_linh_vuc' => 'Lịch Sử'],
         	['ten_linh_vuc' => 'Âm nhạc - Phim'],

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\LinhVuc;
+use DB;
 class LinhVucController extends Controller
 {
     /**
@@ -16,8 +17,8 @@ class LinhVucController extends Controller
         
         
         $listLinhVuc=LinhVuc::all();
-
-        return view('linh-vuc.danh-sach',compact('listLinhVuc'));
+        $trash=DB::table('linh_vuc')->whereNotNull('deleted_at')->get();
+        return view('linh-vuc.danh-sach',['listLinhVuc'=>$listLinhVuc,'trash'=>$trash]);
     }
 
     /**
@@ -96,4 +97,21 @@ class LinhVucController extends Controller
         $linhVuc->delete();
         return redirect()->route('linh-vuc.danh-sach');
     }
+    public function thungrac(){
+        $listLinhVuc=LinhVuc::onlyTrashed()->get();
+        return view('linh-vuc.thung-rac',['listLinhVuc' => $listLinhVuc]);
+    }
+
+    public function restore($id){
+        $listLinhVuc=LinhVuc::withTrashed()->find($id);
+        $listLinhVuc->restore();
+        return redirect('linh-vuc');
+    }
+
+    public function xoadb($id){
+        $linhVuc = LinhVuc::withTrashed()->find($id);
+        $linhVuc->forceDelete();
+        return redirect('linh-vuc');
+    }
+
 }

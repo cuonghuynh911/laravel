@@ -34,6 +34,9 @@ Route::middleware('auth')->group(function(){
 			Route::get('cap-nhat/{id}','LinhVucController@edit')->name('cap-nhat');
 			Route::post('cap-nhat/{id}','LinhVucController@update')->name('xu-li-cap-nhat');
 			Route::get('xoa/{id}','LinhVucController@destroy')->name('xoa');
+			Route::get('restore/{id}','LinhVucController@restore')->name('restore');
+			Route::get('xoadb/{id}','LinhVucController@xoadb')->name('xoadb');
+			Route::get('thung-rac','LinhVucController@thungrac')->name('thungracLinhVuc');
 		});
 	});
 

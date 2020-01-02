@@ -5,8 +5,14 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Danh sách lĩnh vực</h4>
-                <a href="{{ route('linh-vuc.them-moi') }}" class="btn btn-primary waves-effect waves-light">Thêm mới</a><br>
-
+                <a href="{{ route('linh-vuc.them-moi') }}" class="btn btn-primary waves-effect waves-light">Thêm mới</a>
+                @if(session('thongbao'))
+                <div class="alert alert-success">
+                    {{session('thongbao')}}
+                </div>
+                @endif
+                <a href="{{ route('linh-vuc.thungracLinhVuc') }}" class="btn btn-primary waves-effect waves-light">Thùng rác</a><br>
+               
                 <table id="linh-vuc-datatable" class="table dt-responsive nowrap">
                     <thead>
                         <tr>
@@ -19,13 +25,13 @@
                 
                 
                     <tbody>
-                        @foreach($listLinhVuc as $linhVuc)
+                        @foreach($listLinhVuc as $listLinhVuc)
                         <tr>
-                            <td>{{ $linhVuc->id }}</td>
-                            <td>{{ $linhVuc->ten_linh_vuc }}</td>
+                            <td>{{ $listLinhVuc->id }}</td>
+                            <td>{{ $listLinhVuc->ten_linh_vuc }}</td>
                             <td>
-                                <a href="{{ route('linh-vuc.cap-nhat',['id'=>$linhVuc->id]) }}" class="btn btn-success waves-effect waves-light"><i class=" mdi mdi-pencil-outline"></i></a>
-                                <a href="{{ route('linh-vuc.xoa',['id'=>$linhVuc->id]) }}" class="btn btn-danger waves-effect waves-light"><i class=" mdi mdi-trash-can-outline"></i></a>
+                                <a href="{{ route('linh-vuc.cap-nhat',['id'=>$listLinhVuc->id]) }}" class="btn btn-success waves-effect waves-light"><i class=" mdi mdi-pencil-outline"></i></a>
+                                <a href="{{ route('linh-vuc.xoa',['id'=>$listLinhVuc->id]) }}" class="btn btn-danger waves-effect waves-light"><i class=" mdi mdi-trash-can-outline"></i></a>
                             </td>
                             
                         </tr>
@@ -38,6 +44,49 @@
         </div> <!-- end card -->
     </div><!-- end col-->
 </div>
+<script>
+function thongbaocapnhat($id) {
+    Swal.fire({
+        title: 'Bạn có chắc chắn muốn cập nhật
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Cập nhật nó!',
+        cancelButtonText:'Không'
+        }).then((result) => {
+        if (result.value) {
+            Swal.fire(
+            'Đã cập nhật!',
+            'Bạn đã cập nhật thành công.',
+            'success'
+            )
+            $url='xu-li-cap-nhat/'+$id;
+            open($url,"_self") 
+        }
+    })
+}
+function thongbaoxoavv($id) {
+    Swal.fire({
+        title: 'Bạn có chắc xóa không?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok.Xóa nó!',
+        cancelButtonText:'Không'
+        }).then((result) => {
+        if (result.value) {
+            Swal.fire(
+            'Đã xóa!',
+            'Bạn đã xóa thành công.',
+            'success'
+            )
+            $url='thungracLinhVuc/'+$id;
+            open($url,"_self") 
+        }
+    })
+}
+</script>
 @endsection
 
 @section('css')
@@ -46,6 +95,7 @@
     <link href="{{ asset('assets/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/libs/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/libs/datatables/select.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- third party css end -->
 @endsection
 
@@ -65,22 +115,11 @@
     <script src="{{ asset('assets/libs/pdfmake/pdfmake.min.js') }}"></script>
     <script src="{{ asset('assets/libs/pdfmake/vfs_fonts.js') }}"></script>
     <!-- third party js ends -->
+    <!-- Sweet Alerts js -->
+    <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
 
-   
+    <!-- Sweet alert init js-->
+    <script src="{{ asset('assets/js/pages/sweet-alerts.init.js') }}"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#linh-vuc-datatable").DataTable({
-                language: {
-                    paginate: {
-                        previous: "<i class='mdi mdi-chevron-left'>",
-                        next: "<i class='mdi mdi-chevron-right'>"
-                    }
-                },
-                drawCallback: function() {
-                    $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
-                }
-            });
-        });
-    </script>
+
 @endsection

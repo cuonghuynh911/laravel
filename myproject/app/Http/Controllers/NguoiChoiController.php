@@ -41,7 +41,7 @@ class NguoiChoiController extends Controller
     {
         $nguoiChoi = new NguoiChoi;
 
-        $nguoiChoi->ten_nguoi_choi=$request->ten_nguoi_choi;
+        $nguoiChoi->ten_dang_nhap=$request->ten_dang_nhap;
         $nguoiChoi->mat_khau=$request->mat_khau;
         $nguoiChoi->email=$request->email;
         $nguoiChoi->hinh_dai_dien=$request->hinh_dai_dien;

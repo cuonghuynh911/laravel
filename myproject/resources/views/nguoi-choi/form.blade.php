@@ -10,8 +10,8 @@
                     	@csrf
                        
                         <div class="form-group">
-                            <label for="ten_nguoi_choi">Tên người chơi</label>
-                            <input type="text" class="form-control" id="ten_nguoi_choi" name="ten_nguoi_choi" value="" >
+                            <label for="ten_dang_nhap">Tên đăng nhập</label>
+                            <input type="text" class="form-control" id="ten_dang_nhap" name="ten_dang_nhap" value="" >
                         </div>
 
                         <div class="form-group">
