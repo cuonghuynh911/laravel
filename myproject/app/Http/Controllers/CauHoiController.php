@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\CauHoi;
 use App\LinhVuc;
-use Alert;
+use DB;
+
 class CauHoiController extends Controller
 {
     /**
@@ -16,7 +17,8 @@ class CauHoiController extends Controller
     public function index()
     {
         $listCauHoi=CauHoi::all();
-        return view('cau-hoi.danh-sach',compact('listCauHoi'));
+        $trash=DB::table('linh_vuc')->whereNotNull('deleted_at')->get();
+        return view('cau-hoi.danh-sach',['listCauHoi'=>$listCauHoi,'trash'=>$trash]);
     }
 
     /**
@@ -109,5 +111,21 @@ class CauHoiController extends Controller
         $cauHoi = CauHoi::find($id);
         $cauHoi->delete();
         return redirect()->route('cau-hoi.danh-sach');
+    }
+    public function thungrac(){
+        $listCauHoi=CauHoi::onlyTrashed()->get();
+        return view('cau-hoi.thung-rac',['listCauHoi' => $listCauHoi]);
+    }
+
+    public function restore($id){
+        $listCauHoi=CauHoi::withTrashed()->find($id);
+        $listCauHoi->restore();
+        return redirect('cau-hoi');
+    }
+
+    public function xoadb($id){
+        $cauHoi= CauHoi::withTrashed()->find($id);
+        $cauHoi->forceDelete();
+        return redirect('cau-hoi');
     }
 }

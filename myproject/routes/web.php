@@ -48,6 +48,9 @@ Route::middleware('auth')->group(function(){
 			Route::get('cap-nhat/{id}','CauHoiController@edit')->name('cap-nhat');
 			Route::post('cap-nhat/{id}','CauHoiController@update')->name('xu-li-cap-nhat');
 			Route::get('xoa/{id}','CauHoiController@destroy')->name('xoa');
+			Route::get('restore/{id}','CauHoiController@restore')->name('restore');
+			Route::get('xoadb/{id}','CauHoiController@xoadb')->name('xoadb');
+			Route::get('thung-rac','CauHoiController@thungrac')->name('thungracCauHoi');
 		});
 	});
 
@@ -56,7 +59,13 @@ Route::middleware('auth')->group(function(){
 			Route::get('/','NguoiChoiController@index')->name('danh-sach');
 			Route::get('them-moi','NguoiChoiController@create')->name('them-moi');
 			Route::post('them-moi','NguoiChoiController@store')->name('xu-li-them-moi');
+			Route::get('cap-nhat/{id}','NguoiChoiController@edit')->name('cap-nhat');
+			Route::post('cap-nhat/{id}','NguoiChoiController@update')->name('xu-li-cap-nhat'); 
 			Route::get('xoa/{id}','NguoiChoiController@destroy')->name('xoa');
+			Route::get('restore/{id}','NguoiChoiController@restore')->name('restore');
+			Route::get('xoadb/{id}','NguoiChoiController@xoadb')->name('xoadb');
+			Route::get('thung-rac','NguoiChoiController@thungrac')->name('thungracNguoiChoi');
+		
 		});
 	});
 });

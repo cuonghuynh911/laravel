@@ -25,10 +25,9 @@
                             <td>{{ $linhVuc->id }}</td>
                             <td>{{ $linhVuc->ten_linh_vuc }}</td>
                             <td>
-                                <a onclick="thongbaokhoiphuc({{$t->id}})" class="btn btn-outline-success waves-effect"><i class="la la-arrow-circle-left"></i></a>
-                            </td>
-                                <a href="{{route('linh-vuc.xoadb',['id'=>$linhVuc->id]) }}" class="btn btn-success waves-effect waves-light">Xóa vĩnh viễn</a>
-                                
+                                <a onclick="thongbaokhoiphuc({{$linhVuc->id}})" class="btn btn-outline-success waves-effect"><i class="la la-arrow-circle-left"></i></a>
+                           
+                                <a  onclick="thongbaoxoavv({{$linhVuc->id}})" class="btn btn-outline-danger waves-effect"><i class="la la-trash-o"></i></a>
                             </td>
                             
                         </tr>

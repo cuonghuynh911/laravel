@@ -5,7 +5,14 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Danh sách người chơi</h4>
-                <a href="{{ route('nguoi-choi.them-moi') }}" class="btn btn-primary waves-effect waves-light">Thêm mới</a><br>
+                <a href="{{ route('nguoi-choi.them-moi') }}" class="btn btn-primary waves-effect waves-light">Thêm mới</a>
+                 @if(session('thongbao'))
+                <div class="alert alert-success">
+                    {{session('thongbao')}}
+                </div>
+                @endif
+                <a href="{{ route('nguoi-choi.thungracNguoiChoi') }}" class="btn btn-primary waves-effect waves-light">Thùng rác</a><br>
+               
 
                 <table id="nguoi-choi-datatable" class="table dt-responsive nowrap">
                     <thead>
@@ -34,8 +41,8 @@
                             <td>{{ $nguoiChoi->diem_cao_nhat }}</td>
                             <td>{{ $nguoiChoi->credit}}</td>
                             <td>
-                                <a href="#" class="btn btn-success waves-effect waves-light"><i class=" mdi mdi-pencil-outline"></i></a>
-                                <a href="{{ route('nguoi-choi.xoa',['id'=>$nguoiChoi->id]) }}" class="btn btn-danger waves-effect waves-light"><i class=" mdi mdi-trash-can-outline"></i></a>
+                                <a href="{{ route('nguoi-choi.cap-nhat',['id'=>$nguoiChoi->id]) }}" class="btn btn-success waves-effect waves-light"><i class=" mdi mdi-pencil-outline"></i></a>
+                                <a onclick="thongbaoxoa({{$nguoiChoi->id}})" class="btn btn-outline-danger waves-effect"><i class=" la la-trash-o"></i></a>
                             </td>
                             
                         </tr>
@@ -48,6 +55,30 @@
         </div> <!-- end card -->
     </div><!-- end col-->
 </div>
+<script>
+
+function thongbaoxoa($id) {
+    Swal.fire({
+        title: 'Bạn có chắc xóa không?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok.Xóa nó!',
+        cancelButtonText:'Không'
+        }).then((result) => {
+        if (result.value) {
+            Swal.fire(
+            'Đã xóa!',
+            'Bạn đã xóa thành công.',
+            'success'
+            )
+            $url='nguoi-choi/xoa/'+$id;
+            open($url,"_self") 
+        }
+    })
+}
+</script>
 @endsection
 
 @section('css')
@@ -56,6 +87,7 @@
     <link href="{{ asset('assets/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/libs/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/libs/datatables/select.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- third party css end -->
 @endsection
 
@@ -75,7 +107,11 @@
     <script src="{{ asset('assets/libs/pdfmake/pdfmake.min.js') }}"></script>
     <script src="{{ asset('assets/libs/pdfmake/vfs_fonts.js') }}"></script>
     <!-- third party js ends -->
+    <!-- Sweet Alerts js -->
+    <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
 
+    <!-- Sweet alert init js-->
+    <script src="{{ asset('assets/js/pages/sweet-alerts.init.js') }}"></script>
    
 
     <script type="text/javascript">

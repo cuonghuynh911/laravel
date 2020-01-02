@@ -4,20 +4,23 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="header-title">Danh sách lĩnh vực</h4>
-                <a href="{{ route('linh-vuc.them-moi') }}" class="btn btn-primary waves-effect waves-light">Thêm mới</a>
+                <h4 class="header-title">Danh sách câu hỏi</h4>
                 @if(session('thongbao'))
                 <div class="alert alert-success">
                     {{session('thongbao')}}
                 </div>
                 @endif
-                <a href="{{ route('linh-vuc.thungracLinhVuc') }}" class="btn btn-primary waves-effect waves-light">Thùng rác</a><br>
-               
-                <table id="linh-vuc-datatable" class="table dt-responsive nowrap">
+                <table id="cau-hoi-datatable" class="table dt-responsive nowrap">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Tên lĩnh vực</th>
+                            <th>Nội dung</th>
+                            <th>Lĩnh vực</th>
+                            <th>Phương án A</th>
+                            <th>Phương án B</th>
+                            <th>Phương án C</th>
+                            <th>Phương án D</th>
+                            <th>Đáp án </th>
                             <th></th>
                             
                         </tr>
@@ -25,13 +28,19 @@
                 
                 
                     <tbody>
-                        @foreach($listLinhVuc as $listLinhVuc)
+                        @foreach($listCauHoi as $cauHoi)
                         <tr>
-                            <td>{{ $listLinhVuc->id }}</td>
-                            <td>{{ $listLinhVuc->ten_linh_vuc }}</td>
+                            <td>{{ $cauHoi->id }}</td>
+                            <td>{{ $cauHoi->noi_dung }}</td>
+                            <td>{{ $cauHoi->linh_vuc_id }}</td>
+                            <td>{{ $cauHoi->phuong_an_a }}</td>
+                            <td>{{ $cauHoi->phuong_an_b }}</td>
+                            <td>{{ $cauHoi->phuong_an_c }}</td>
+                            <td>{{ $cauHoi->phuong_an_d }}</td>
+                            <td>{{ $cauHoi->dap_an }}</td>
                             <td>
-                                 <a href="{{ route('linh-vuc.cap-nhat',['id'=>$listLinhVuc->id]) }}" class="btn btn-success waves-effect waves-light"><i class=" mdi mdi-pencil-outline"></i></a>
-                                <a onclick="thongbaoxoa({{$listLinhVuc->id}})" class="btn btn-outline-danger waves-effect"><i class=" la la-trash-o"></i></a>
+                                <a onclick="thongbaokhoiphuc({{$cauHoi->id}})" class="btn btn-outline-success waves-effect"><i class="la la-arrow-circle-left"></i></a>
+                                <a  onclick="thongbaoxoavv({{$cauHoi->id}})" class="btn btn-outline-danger waves-effect"><i class="la la-trash-o"></i></a>
                             </td>
                             
                         </tr>
@@ -45,24 +54,44 @@
     </div><!-- end col-->
 </div>
 <script>
-
-function thongbaoxoa($id) {
+function thongbaoxoavv($id) {
     Swal.fire({
-        title: 'Bạn có chắc xóa không?',
+        title: 'Bạn có chắc chắn muốn xóa Không?',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Ok.Xóa nó!',
+        confirmButtonText: 'Ok. Xóa nó!',
         cancelButtonText:'Không'
         }).then((result) => {
         if (result.value) {
             Swal.fire(
-            'Đã xóa!',
+            'Đã Xóa!',
             'Bạn đã xóa thành công.',
             'success'
             )
-            $url='linh-vuc/xoa/'+$id;
+            $url='xoadb/'+$id;
+            open($url,"_self") 
+        }
+    })
+}
+function thongbaokhoiphuc($id) {
+    Swal.fire({
+        title: 'Bạn có chắc khôi phục không?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok. Khôi phục nó!',
+        cancelButtonText:'Không'
+        }).then((result) => {
+        if (result.value) {
+            Swal.fire(
+            'Đã khôi phục!',
+            'Bạn đã khôi phục thành công.',
+            'success'
+            )
+            $url='restore/'+$id;
             open($url,"_self") 
         }
     })
@@ -101,6 +130,22 @@ function thongbaoxoa($id) {
 
     <!-- Sweet alert init js-->
     <script src="{{ asset('assets/js/pages/sweet-alerts.init.js') }}"></script>
+    <!-- Datatables init -->
+   
 
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#cau-hoi-datatable").DataTable({
+                language: {
+                    paginate: {
+                        previous: "<i class='mdi mdi-chevron-left'>",
+                        next: "<i class='mdi mdi-chevron-right'>"
+                    }
+                },
+                drawCallback: function() {
+                    $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
+                }
+            });
+        });
+    </script>
 @endsection

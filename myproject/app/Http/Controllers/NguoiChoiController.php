@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\NguoiChoi;
-use App\LinhVuc;
+use DB;
 
 class NguoiChoiController extends Controller
 {
@@ -16,8 +16,8 @@ class NguoiChoiController extends Controller
    public function index()
     {
        $listNguoiChoi=NguoiChoi::all();
-
-        return view('nguoi-choi.danh-sach',compact('listNguoiChoi'));
+        $trash=DB::table('nguoi_choi')->whereNotNull('deleted_at')->get();
+        return view('nguoi-choi.danh-sach',['listNguoiChoi'=>$listNguoiChoi,'trash'=>$trash]);
     }
 
     /**
@@ -72,7 +72,9 @@ class NguoiChoiController extends Controller
     public function edit($id)
     {
 
-       
+        $nguoiChoi = NguoiChoi::find($id);
+         
+        return view('nguoi-choi.update', compact('nguoiChoi'));   
     }
 
     /**
@@ -84,6 +86,15 @@ class NguoiChoiController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $nguoiChoi = NguoiChoi::find($id);
+        $nguoiChoi->ten_dang_nhap=$request->ten_dang_nhap;
+        $nguoiChoi->email=$request->email;
+        $nguoiChoi->hinh_dai_dien=$request->hinh_dai_dien;
+        $nguoiChoi->diem_cao_nhat=$request->diem_cao_nhat;
+        $nguoiChoi->credit=$request->credit;
+        $nguoiChoi->save();
+
+        return redirect()->route('nguoi-choi.danh-sach');
     }
 
     /**
@@ -94,8 +105,24 @@ class NguoiChoiController extends Controller
      */
     public function destroy($id)
     {
-        $nguoiChoi = NguoiChoi::find($id);
+        $nguoiChoi= NguoiChoi::find($id);
         $nguoiChoi->delete();
         return redirect()->route('nguoi-choi.danh-sach');
+    }
+    public function thungrac(){
+        $listNguoiChoi=NguoiChoi::onlyTrashed()->get();
+        return view('nguoi-choi.thung-rac',['listNguoiChoi' => $listNguoiChoi]);
+    }
+
+    public function restore($id){
+        $listNguoiChoi=NguoiChoi::withTrashed()->find($id);
+        $listNguoiChoi->restore();
+        return redirect('nguoi-choi');
+    }
+
+    public function xoadb($id){
+        $cauHoi= NguoiChoi::withTrashed()->find($id);
+        $cauHoi->forceDelete();
+        return redirect('nguoi-choi');
     }
 }

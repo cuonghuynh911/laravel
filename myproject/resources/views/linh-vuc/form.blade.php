@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('main-content')
-	<div class="row">
+    <div class="row">
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
@@ -11,7 +11,7 @@
                     @else
                     <form action="{{ route('linh-vuc.xu-li-them-moi') }}" method="POST">
                         @endif
-                    	@csrf
+                        @csrf
                        
                         <div class="form-group">
                             <label for="ten_linh_vuc">Tên</label>
