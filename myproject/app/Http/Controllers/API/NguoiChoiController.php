@@ -11,9 +11,7 @@ class NguoiChoiController extends Controller
     //
     public function layNguoiChoi()
     {
-    	
-    	
-    	$listNguoiChoi=NguoiChoi::all()->random(4);
+    	$listNguoiChoi=NguoiChoi::all();
     	$result=[
     		'success' => true,
     		'data' =>$listNguoiChoi

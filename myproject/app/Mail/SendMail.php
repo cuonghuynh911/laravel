@@ -31,10 +31,10 @@ class SendMail extends Mailable
         return $this->view('email.sendmail')
                     ->text('email.sendmail_plain')
                     ->with([
-                        'gia_tri_1' => 1
+                        'gia_tri_1' => 1,
                         'gia_tri_2' =>100
                     ])
-                    ->attach(public_path('/images').'demo/jpg', [
+                    ->attach(public_path('\images').'demo.jpg', [
                         #đính kèm (optional)
                         'as' => 'demo.jpg',
                         'mine' =>'images/jpeg',

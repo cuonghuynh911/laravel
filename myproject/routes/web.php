@@ -21,6 +21,8 @@ Route::post('dang-nhap','QuanTriVienController@xuLyDangNhap')->name('xu-ly-dang-
 
 Route::get('dang-xuat','QuanTriVienController@dangXuat')->name('dang-xuat');
 
+Route::get('mail/send','SendMailController@send');
+
 Route::middleware('auth')->group(function(){
 	Route::get('/', function () {
 	    return view('layout');
